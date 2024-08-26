@@ -30,6 +30,18 @@ public class ProjectGeneratorController {
                           String packageName,
                           String springBootVersion,
                           HttpServletResponse response) throws IOException {
+        if (StringUtils.isBlank(groupId)) {
+            groupId = "com.mxue.generator.single";
+        }
+        if (StringUtils.isBlank(artifact)) {
+            artifact = "generator-single";
+        }
+        if (StringUtils.isBlank(version)) {
+            version = "1.0.0";
+        }
+        if (StringUtils.isBlank(packageName)) {
+            packageName = "com.mxue.generator.single";
+        }
         if (StringUtils.isBlank(springBootVersion)) {
             springBootVersion = "2.5.6";
         }

@@ -114,7 +114,8 @@ public class SysGeneratorService {
                 packageName,
                 springBootVersion
                 , zip);
-        String[] tableNames = config.getStringArray("tables");
+        //String[] tableNames = config.getStringArray("tables");
+        String[] tableNames = {"tb_car"};
         for (String tableName : tableNames) {
             //查询表信息
             Map<String, String> table = queryTable(tableName);

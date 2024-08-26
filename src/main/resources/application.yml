@@ -37,6 +37,9 @@ spring:
 
 mybatis-plus:
   mapperLocations: classpath:mapper/**/*.xml
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 pagehelper:
   reasonable: true
@@ -44,7 +47,7 @@ pagehelper:
   params: count=countSql
 
 
-#指定数据库，可选值有【mysql、oracle、sqlserver、postgresql、mongodb】
+#指定数据库，可选值有【mysql、oracle、sqlserver、postgresql】
 aimin:
   database: mysql
 
