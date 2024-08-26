@@ -45,7 +45,7 @@ public class ${className}Controller extends AbstractController {
     /**
      * 全量保存
      */
-    @RequestMapping("/saveall")
+    @RequestMapping("/saveAll")
     public Result saveall(@RequestBody ${className}AllCommand ${pathName}AllCommand) {
         ValidatorUtils.validateEntity(${pathName}AllCommand, AddGroup.class);
         ${pathName}AllServiceFacade.saveAll(${pathName}AllCommand);

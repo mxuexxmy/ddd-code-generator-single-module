@@ -9,10 +9,10 @@
         <version>2.5.6</version>
     </parent>
 
-    <groupId>xyz.mxue</groupId>
-    <artifactId>ddd-code-generator</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>ddd-code-generator</name>
+    <groupId>xyz.mxue.generator.single</groupId>
+    <artifactId>ddd-code-generator-single-module</artifactId>
+    <version>1.0.0</version>
+    <name>ddd-code-generator-single-module</name>
     <packaging>jar</packaging>
     <description>一款基于DDD开发模式的工程框架及代码生成器</description>
 

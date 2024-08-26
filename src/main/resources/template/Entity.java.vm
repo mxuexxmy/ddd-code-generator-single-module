@@ -26,19 +26,23 @@ public class ${className} implements Entity<${className}> {
 	#if($column.columnName == $pk.columnName)
 	private ${className}Id id;
 	#end
-	#if($column.attrname != "id"
-    &&$column.attrname != "delFlag"
-    &&$column.attrname != "createdBy"
-    &&$column.attrname != "createdTime"
-    &&$column.attrname != "updatedBy"
-    &&$column.attrname != "updatedTime"
-    &&$column.attrname != "status")
+	#if($column.attrname != "enabledMark"
+	&&$column.attrname != "deleteMark"
+	&&$column.attrname != "createdUser"
+	&&$column.attrname != "createdUserName"
+	&&$column.attrname != "createdTime"
+	&&$column.attrname != "updatedUserName"
+	&&$column.attrname != "updatedTime"
+	&&$column.attrname != "deleteUser"
+	&&$column.attrname != "deleteUserName"
+	&&$column.attrname != "deleteTime"
+	&&$column.attrname != "tenantId")
 	/**
 	 * $column.comments
 	 */
 	private $column.attrType $column.attrname;
 	#end
-    #if($column.attrname == "status")
+    #if($column.attrname == "enabledMark")
     /**
      * 状态
      */

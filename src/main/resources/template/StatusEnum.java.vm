@@ -12,19 +12,24 @@ import org.apache.commons.lang.StringUtils;
 public enum StatusEnum implements ValueObject<StatusEnum> {
 
     /**
+    * 未生效
+    */
+    NOT_EFFECTIVE(-1,"未生效"),
+
+    /**
      * 有效
      */
-    ENABLE("0","有效"),
+    ENABLE(0,"有效"),
 
     /**
      * 禁用
      */
-    DISABLE("1","禁用");
+    DISABLE(1,"禁用");
 
 
-    private String value;
+    private final String value;
 
-    private String label;
+    private final String label;
 
     StatusEnum(String value, String label) {
         this.value = value;

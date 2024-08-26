@@ -20,11 +20,17 @@ import java.util.Date;
 public class ${className}DTO implements Serializable {
 
     #foreach ($column in $columns)
-    #if($column.attrname != "delFlag"
-    &&$column.attrname != "createdBy"
-    &&$column.attrname != "createdTime"
-    &&$column.attrname != "updatedBy"
-    &&$column.attrname != "updatedTime")
+        #if($column.attrname != "enabledMark"
+        &&$column.attrname != "deleteMark"
+        &&$column.attrname != "createdUser"
+        &&$column.attrname != "createdUserName"
+        &&$column.attrname != "createdTime"
+        &&$column.attrname != "updatedUserName"
+        &&$column.attrname != "updatedTime"
+        &&$column.attrname != "deleteUser"
+        &&$column.attrname != "deleteUserName"
+        &&$column.attrname != "deleteTime"
+        &&$column.attrname != "tenantId")
     /**
      * $column.comments
      */

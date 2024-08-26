@@ -25,11 +25,16 @@ import java.util.Date;
 public class ${className}Command {
 
 #foreach ($column in $columns)
-    #if($column.attrname != "delFlag"
-    &&$column.attrname != "createdBy"
+    #if($column.attrname != "enabledMark"
+    &&$column.attrname != "deleteMark"
+    &&$column.attrname != "createdUser"
+    &&$column.attrname != "createdUserName"
     &&$column.attrname != "createdTime"
-    &&$column.attrname != "updatedBy"
+    &&$column.attrname != "updatedUserName"
     &&$column.attrname != "updatedTime"
+    &&$column.attrname != "deleteUser"
+    &&$column.attrname != "deleteUserName"
+    &&$column.attrname != "deleteTime"
     &&$column.attrname != "tenantId")
     /**
      * $column.comments

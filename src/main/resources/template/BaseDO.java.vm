@@ -1,10 +1,14 @@
 package ${package}.common;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Data;
 
 
 /**
@@ -17,6 +21,7 @@ import java.util.Date;
 @Data
 public class BaseDO implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -26,27 +31,72 @@ public class BaseDO implements Serializable {
     private String id;
 
     /**
-     * 删除标识
+	 * 是否启用(0:未启用；1:启用)
+	 */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer enabledMark;
+
+    /**
+     * 备注
      */
-    private String delFlag;
+    private String description;
+
+    /**
+     * 删除标识(0:正常；1:删除)
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Integer deleteMark;
+
+    /**
+     * 创建人编码
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private String createdUser;
 
     /**
      * 创建人
      */
-    private String createdBy;
+    @TableField(fill = FieldFill.INSERT)
+    private String createdUserName;
 
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8") //指定格式
     private Date createdTime;
 
     /**
-     * 更新人
+     * 修改人编码
      */
-    private String updatedBy;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updatedUser;
 
     /**
-     * 更新时间
+     * 修改人
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updatedUserName;
+
+    /**
+     * 修改时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8") //指定格式
     private Date updatedTime;
+
+    /**
+     * 删除人编码
+     */
+    private String deleteUser;
+
+    /**
+     * 删除人
+     */
+    private String deleteUserName;
+
+    /**
+     * 删除时间
+     */
+    private Date deleteTime;
 }
