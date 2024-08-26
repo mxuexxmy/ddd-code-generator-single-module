@@ -107,7 +107,13 @@ public class SysGeneratorService {
         //配置信息
         Configuration config = GenUtilsCommon.getConfig();
         // 生成工程框架
-        GenUtils3.generatorFixCode(config, groupId, artifact, version, packageName, springBootVersion, zip);
+        GenUtils3.generatorFixCode(config,
+                groupId,
+                artifact,
+                version,
+                packageName,
+                springBootVersion
+                , zip);
         String[] tableNames = config.getStringArray("tables");
         for (String tableName : tableNames) {
             //查询表信息
@@ -115,7 +121,15 @@ public class SysGeneratorService {
             //查询列信息
             List<Map<String, String>> columns = queryColumns(tableName);
             //生成代码
-            GenUtils3.generatorCode(config, groupId, artifact, version, packageName, springBootVersion, table, columns, zip);
+            GenUtils3.generatorCode(config,
+                    groupId,
+                    artifact,
+                    version,
+                    packageName,
+                    springBootVersion,
+                    table,
+                    columns,
+                    zip);
         }
         IOUtils.closeQuietly(zip);
         return outputStream.toByteArray();

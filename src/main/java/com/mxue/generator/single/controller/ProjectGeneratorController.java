@@ -33,7 +33,11 @@ public class ProjectGeneratorController {
         if (StringUtils.isBlank(springBootVersion)) {
             springBootVersion = "2.5.6";
         }
-        byte[] data = sysGeneratorService.generatorCode3(groupId, artifact, version, packageName, springBootVersion);
+        byte[] data = sysGeneratorService.generatorCode3(groupId,
+                artifact,
+                version,
+                packageName,
+                springBootVersion);
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");
         response.addHeader("Content-Length", "" + data.length);

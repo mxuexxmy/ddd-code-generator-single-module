@@ -156,7 +156,8 @@ public class GenUtils3 {
 
         //设置velocity资源加载器
         Properties prop = new Properties();
-        prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        prop.put("file.resource.loader.class",
+                "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
 
         //封装模板数据
@@ -362,7 +363,10 @@ public class GenUtils3 {
         return null;
     }
 
-    private static String getFixFileName(String template, String projectNamePath, String packageName, String moduleName) {
+    private static String getFixFileName(String template,
+                                         String projectNamePath,
+                                         String packageName,
+                                         String moduleName) {
 
         if (template.contains("parent/pom.xml.vm")) {
             return projectNamePath + File.separator + "pom.xml";
