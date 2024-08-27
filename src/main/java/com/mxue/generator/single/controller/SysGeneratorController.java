@@ -35,7 +35,6 @@ public class SysGeneratorController {
     public static String moduleName = null;
     public static String tablePrefix = null;
     public static String adminUrl = null;
-    public static String frontUrl = null;
     public static String interfacesPath = null;
     public static String applicationPath = null;
     public static String domainPath = null;
@@ -66,13 +65,11 @@ public class SysGeneratorController {
                      String domainPath,
                      String infrastructurePath,
                      String adminUrl,
-                     String frontUrl,
-                     boolean frontCheck,
                      boolean sqlAuto,
                      HttpServletResponse response) throws IOException {
-        handStaticData(packageName, moduleName, tablePrefix,  interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl, frontUrl);
+        handStaticData(packageName, moduleName, tablePrefix,  interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl);
 
-        byte[] data = sysGeneratorService.generatorCode(tables.split(","), isAuto, frontCheck, sqlAuto);
+        byte[] data = sysGeneratorService.generatorCode(tables.split(","), isAuto, sqlAuto);
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");
         response.addHeader("Content-Length", "" + data.length);
@@ -96,13 +93,11 @@ public class SysGeneratorController {
                       String domainPath,
                       String infrastructurePath,
                       String adminUrl,
-                      String frontUrl,
-                      boolean frontCheck,
                       boolean sqlAuto,
                       HttpServletResponse response) throws IOException {
-        handStaticData(packageName, moduleName, tablePrefix,  interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl, frontUrl);
+        handStaticData(packageName, moduleName, tablePrefix,  interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl);
         System.out.println("tables"+tables);
-        byte[] data = sysGeneratorService.generatorCode2(tables.split(","), key, first, isAuto, frontCheck, sqlAuto);
+        byte[] data = sysGeneratorService.generatorCode2(tables.split(","), key, first, isAuto, sqlAuto);
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");
         response.addHeader("Content-Length", "" + data.length);
@@ -140,12 +135,10 @@ public class SysGeneratorController {
                         String domainPath,
                         String infrastructurePath,
                         String adminUrl,
-                        String frontUrl,
-                        boolean frontCheck,
                         boolean sqlAuto,
                         HttpServletResponse response) throws IOException {
-        handStaticData(packageName, moduleName, tablePrefix,  interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl, frontUrl);
-        sysGeneratorService.generatorCode(tables.split(","), isAuto, frontCheck, sqlAuto);
+        handStaticData(packageName, moduleName, tablePrefix,  interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl);
+        sysGeneratorService.generatorCode(tables.split(","), isAuto, sqlAuto);
         return Result.ok();
     }
 
@@ -166,12 +159,10 @@ public class SysGeneratorController {
                          String domainPath,
                          String infrastructurePath,
                          String adminUrl,
-                         String frontUrl,
-                         boolean frontCheck,
                          boolean sqlAuto,
                          HttpServletResponse response) throws IOException {
-        handStaticData(packageName, moduleName, tablePrefix, interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl, frontUrl);
-        sysGeneratorService.generatorCode2(tables.split(","), key, first, isAuto, frontCheck, sqlAuto);
+        handStaticData(packageName, moduleName, tablePrefix, interfacesPath, applicationPath, domainPath, infrastructurePath, adminUrl);
+        sysGeneratorService.generatorCode2(tables.split(","), key, first, isAuto, sqlAuto);
         return Result.ok();
     }
 
@@ -183,8 +174,7 @@ public class SysGeneratorController {
                                 String applicationPath,
                                 String domainPath,
                                 String infrastructurePath,
-                                String adminUrl,
-                                String frontUrl) {
+                                String adminUrl) {
         if (!StringUtils.isNullOrEmpty(packageName)) {
             SysGeneratorController.packageName = packageName;
         }
@@ -208,9 +198,6 @@ public class SysGeneratorController {
         }
         if (!StringUtils.isNullOrEmpty(infrastructurePath)) {
             SysGeneratorController.infrastructurePath = infrastructurePath;
-        }
-        if (!StringUtils.isNullOrEmpty(frontUrl)) {
-            SysGeneratorController.frontUrl = frontUrl;
         }
     }
 

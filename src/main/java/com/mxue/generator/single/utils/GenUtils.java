@@ -28,7 +28,6 @@ public class GenUtils {
      */
     public static void generatorCode(Map<String, String> table,
                                      boolean isAuto,
-                                     boolean frontCheck,
                                      boolean sqlAuto,
                                      List<Map<String, String>> columns, ZipOutputStream zip) {
         //配置信息
@@ -92,13 +91,12 @@ public class GenUtils {
         //封装模板数据
         Map<String, Object> map = new HashMap<>();
         map.put("isFirst", false);
-        map.put("frontCheck", frontCheck);
         map.put("tableName", tableEntity.getTableName());
         map.put("comments", tableEntity.getComments());
         map.put("pk", tableEntity.getPk());
         map.put("className", tableEntity.getClassName());
         map.put("classname", tableEntity.getClassname());
-        map.put("pathName", tableEntity.getClassname().toLowerCase());
+        map.put("pathName", CodeNameFormatUtils.pascalConvertCamel(tableEntity.getClassname()));
         map.put("columns", tableEntity.getColumns());
         map.put("hasBigDecimal", hasBigDecimal);
         map.put("hasList", hasList);

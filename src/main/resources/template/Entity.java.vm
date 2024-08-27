@@ -27,6 +27,7 @@ public class ${className} implements Entity<${className}> {
 	private ${className}Id id;
 	#end
 	#if($column.attrname != "enabledMark"
+	&&$column.attrname != "id"
 	&&$column.attrname != "deleteMark"
 	&&$column.attrname != "createdUser"
 	&&$column.attrname != "createdUserName"

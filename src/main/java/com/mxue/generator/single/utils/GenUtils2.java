@@ -31,7 +31,6 @@ public class GenUtils2 {
                                                     String foreignKey,
                                                     String firstTable,
                                                     boolean isAuto,
-                                                    boolean frontCheck,
                                                     boolean sqlAuto,
                                                     List<Map<String, Object>> subList) {
         //配置信息
@@ -100,7 +99,6 @@ public class GenUtils2 {
         }
         map.put("subList", subList);
         map.put("isFirst", isFirst);
-        map.put("frontCheck", frontCheck);
         map.put("firstTable", firstTable);
         map.put("foreignKey", foreignKey);
         map.put("foreignColumnB", GenUtilsCommon.columnToJava(foreignKey));
@@ -110,7 +108,7 @@ public class GenUtils2 {
         map.put("pk", tableEntity.getPk());
         map.put("className", tableEntity.getClassName());
         map.put("classname", tableEntity.getClassname());
-        map.put("pathName", tableEntity.getClassname().toLowerCase());
+        map.put("pathName", CodeNameFormatUtils.pascalConvertCamel(tableEntity.getClassname()));
         map.put("columns", tableEntity.getColumns());
         map.put("hasBigDecimal", hasBigDecimal);
         map.put("hasList", hasList);

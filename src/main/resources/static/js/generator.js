@@ -135,7 +135,6 @@ var vm = new Vue({
 
             var key6 = 0;
             var key7 = $("#adminUrl").val();
-            var key8 = $("#frontUrl").val();
             var interfacesPath = $("#interfacesPath").val();
             var applicationPath = $("#applicationPath").val();
             var domainPath = $("#domainPath").val();
@@ -161,10 +160,6 @@ var vm = new Vue({
                 }
                 if (key7 == null || key7 == "" || key7 == '') {
                     alert("请输入后端路径[adminUrl]");
-                    return;
-                }
-                if (key8 == null || key8 == "" || key8 == '') {
-                    alert("请输入前端路径[frontUrl]");
                     return;
                 }
             }
@@ -208,7 +203,6 @@ var vm = new Vue({
                 + "&domainPath=" + domainPath
                 + "&infrastructurePath=" + infrastructurePath
                 + "&adminUrl=" + key7
-                + "&frontUrl=" + key8
                 + "&frontCheck=" + key9
                 + "&sqlAuto=" + key10
                 + "&tables=" + tableNames.join();

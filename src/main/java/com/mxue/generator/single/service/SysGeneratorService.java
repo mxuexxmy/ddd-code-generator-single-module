@@ -47,7 +47,6 @@ public class SysGeneratorService {
 
     public byte[] generatorCode(String[] tableNames,
                                 boolean isAuto,
-                                boolean frontCheck,
                                 boolean sqlAuto) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ZipOutputStream zip = new ZipOutputStream(outputStream);
@@ -57,7 +56,7 @@ public class SysGeneratorService {
             //查询列信息
             List<Map<String, String>> columns = queryColumns(tableName);
             //生成代码
-            GenUtils.generatorCode(table, isAuto, frontCheck, sqlAuto, columns, zip);
+            GenUtils.generatorCode(table, isAuto, sqlAuto, columns, zip);
         }
 
         IOUtils.closeQuietly(zip);
@@ -69,7 +68,6 @@ public class SysGeneratorService {
                                  String key,
                                  String first,
                                  boolean isAuto,
-                                 boolean frontCheck,
                                  boolean sqlAuto) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ZipOutputStream zip = new ZipOutputStream(outputStream);
@@ -81,7 +79,7 @@ public class SysGeneratorService {
                 //查询列信息
                 List<Map<String, String>> columns = queryColumns(tableName);
                 //生成代码
-                Map<String, Object> map = GenUtils2.generatorCode(table, columns, zip, key, first, isAuto, frontCheck, sqlAuto, null);
+                Map<String, Object> map = GenUtils2.generatorCode(table, columns, zip, key, first, isAuto, sqlAuto, null);
                 subList.add(map);
             }
         }
@@ -91,7 +89,7 @@ public class SysGeneratorService {
         //查询列信息
         List<Map<String, String>> columns = queryColumns(first);
         //生成代码
-        GenUtils2.generatorCode(table, columns, zip, key, first, isAuto, frontCheck, sqlAuto, subList);
+        GenUtils2.generatorCode(table, columns, zip, key, first, isAuto, sqlAuto, subList);
 
         IOUtils.closeQuietly(zip);
         return outputStream.toByteArray();
